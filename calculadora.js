@@ -10,7 +10,7 @@ const impostosLucroPreumido = {
 }
 
 
-//Calculo do ICMS 1
+//Calculo do ICMS
 function somaIcms(faturamentoLp){
      return Number(faturamentoLp * impostosLucroPreumido.ICMS)
     
