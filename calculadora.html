@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="calculadora.css" />
+  </head>
+  <body>
+    <h2>Calculadora - Ac Contabilidade</h2>
+
+    <br />
+    <div>
+       <h2>Calculo ICMS</h2>
+       <p>Aliquota de ICMS no CE: 20%</p>
+       <input type="text" id="faturamento" placeholder="Digite o Faturamento"/>
+       <button id="bntCalcular">ICMS</button>
+       <p id="resultadoIcms"></p>
+    </div>
+
+    <div>
+       <h2>Calculo PIS e COFINS</h2>
+       <p>Aliquota de PIS: 0,65%</p>
+       <p>Aliquota de COFINS:3,0%</p>
+       <input type="text" id="fatuPisCofins" placeholder="Digite o Faturamento"/>
+       <button id="bntPisCofins">PIS/COFINS</button>
+       <p id="resultadoPisCofins"></p>
+    </div>
+
+
+     <div>
+         <h2>Calculo IRPJ</h2>
+         <p>Fatuarmento do Trimestre:</p>
+         <input type="text" id="faturamentoTri" placeholder="Faturamento trimestre">
+         <button id="botaoIrpj">IRPJ</button>
+    </div>
+
+     <div>
+        <label for="atividade">Atividade:</label>
+        <select id="atividade">
+            <option value="comercio">comercio</option>
+            <option value="servico">servico</option>
+        </select>
+    </div>
+
+    <p id="resultadoIrpj" class="result"></p>
+    
+ <div>
+      <h2>Calculo CSLL</h2>
+        <input type="text" id="faturamentoCsll" placeholder="Faturamento trimestre">
+         <button id="botaoCsll">CSLL</button>
+    </div>
+
+     <div>
+        <label for="atividade">Atividade:</label>
+        <select id="atividadeCsll">
+            <option value="comercio">comercio</option>
+            <option value="servico">servico</option>
+        </select>
+    </div>
+
+    <p id="resultadoCsll" class="result"></p>
+
+      <div>
+        <h2>Calculo 10% produtos isentos</h2>
+        <input type="text" id="valorIsentos" placeholder="Faturamento produtos isentos">
+        <button id="bntIsentos">Isento</button>
+        <p id="valorPagar"></p>
+      </div>
+    
+    
+
+    <script src="calculadora.js"></script>
+  </body>
+</html>

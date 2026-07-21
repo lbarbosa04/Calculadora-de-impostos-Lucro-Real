@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+ 
+:root {
+  --paper: #f2e8e2;
+  --paper-raised: #faf8f1;
+  --ink: #1c2b22;
+  --forest: #1b4d3e;
+  --forest-deep: #0f332a;
+  --gold: #a9792c;
+  --rule: #cbc2a8;
+  --stamp-red: #9c3b2e;
+}
+ 
+* {
+  box-sizing: border-box;
+}
+ 
+body {
+  margin: 0;
+  padding: 48px 20px 80px;
+  background:
+    linear-gradient(var(--paper), var(--paper)),
+    repeating-linear-gradient(
+      transparent,
+      transparent 27px,
+      var(--rule) 28px
+    );
+  background-blend-mode: normal;
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+ 
+body::before {
+  content: 'DOCUMENTO DE APURAÇÃO FISCAL - LUCRO PRESUMIDO';
+  align-self: center;
+  width: 100%;
+  max-width: 620px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: var(--gold);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 10px;
+  margin-bottom: 4px;
+}
+ 
+h2 {
+  align-self: flex-start;
+  width: 100%;
+  max-width: 620px;
+  margin: 4px 0 8px;
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 2.1rem;
+  color: var(--forest-deep);
+  letter-spacing: -0.01em;
+}
+ 
+br {
+  display: none;
+}
+ 
+/* Each calculation block reads as a numbered "quadro" (form field group),
+   the way Brazilian tax documents (DARF, guias) label their sections. */
+body {
+  counter-reset: quadro;
+}
+ 
+body > div {
+  counter-increment: quadro;
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 22px 24px 24px;
+  margin-bottom: 18px;
+  box-shadow: 0 1px 0 rgba(28, 43, 34, 0.05);
+  
+}
+ 
+body > div::before {
+  content: 'QUADRO ' counter(quadro, decimal-leading-zero);
+  position: absolute;
+  top: -9px;
+  left: 20px;
+  background: var(--forest);
+  color: var(--paper-raised);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  padding: 3px 9px;
+  border-radius: 10px;
+  
+}
+ 
+/* The two label/select divs (Atividade) aren't independent quadros —
+   fold them visually into the block above by pulling them up and
+   dropping the numbered tab + spacing. */
+body > div:has(#atividade),
+body > div:has(#atividadeCsll) {
+  margin-top: -20px;
+  padding-top: 4px;
+  border-top: none;
+  box-shadow: none;
+}
+ 
+body > div:has(#atividade)::before,
+body > div:has(#atividadeCsll)::before {
+  content: none;
+}
+ 
+h2 {
+  margin: 4px 0 14px;
+  font-family: 'Fraunces', serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--forest-deep);
+}
+ 
+div p {
+  margin: 0 0 6px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.82rem;
+  color: var(--gold);
+}
+ 
+label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--forest-deep);
+  margin-bottom: 6px;
+}
+ 
+input[type='text'],
+select {
+  width: 100%;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+ 
+input[type='text']::placeholder {
+  color: #8d8368;
+}
+ 
+input[type='text']:focus,
+select:focus {
+  outline: none;
+  border-color: var(--forest);
+  background: var(--paper-raised);
+  box-shadow: 0 0 0 3px rgba(27, 77, 62, 0.15);
+}
+ 
+select {
+  cursor: pointer;
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--forest) 50%),
+    linear-gradient(135deg, var(--forest) 50%, transparent 50%);
+  background-position: calc(100% - 18px) center, calc(100% - 13px) center;
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+}
+ 
+button {
+  display: inline-block;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--paper-raised);
+  background: var(--forest);
+  border: none;
+  border-radius: 10px;
+  padding: 11px 22px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.05s ease;
+}
+ 
+button:hover {
+  background: var(--forest-deep);
+}
+ 
+button:active {
+  transform: translateY(1px);
+}
+ 
+button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+ 
+/* Results render like an ink stamp validating the field — the one
+   deliberately bold gesture on an otherwise quiet ledger page. */
+#resultadoIcms,
+#resultadoPisCofins,
+#resultadoIrpj,
+#valorPagar,
+#resultadoCsll {
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 600;
+  min-height: 1.4em;
+}
+ 
+#resultadoIcms:not(:empty),
+#valorPagar:not(:empty),
+#resultadoPisCofins:not(:empty) {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 16px;
+  color: var(--stamp-red);
+  border: 2px solid var(--stamp-red);
+  border-radius: 3px;
+  transform: rotate(-2deg);
+  background: rgba(156, 59, 46, 0.05);
+  font-size: 1.0rem;
+}
+ 
+p.result:not(:empty) {
+  display: inline-block;
+  max-width: 620px;
+  width: 100%;
+  margin: -10px 0 18px;
+  padding: 10px 16px;
+  color: var(--stamp-red);
+  border: 2px solid var(--stamp-red);
+  border-radius: 3px;
+  background: rgba(156, 59, 46, 0.05);
+}
+ 
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+ 
+  body > div {
+    padding: 18px 16px 20px;
+  }
+}
+ 
